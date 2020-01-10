@@ -1,9 +1,8 @@
 import * as tf from '@tensorflow/tfjs-node';
 import sharp from 'sharp';
-import path from 'path';
 import { APIResponse } from './interfaces';
 
-const imageDim = 244;
+const imageDim = 256;
 
 export let predict = async (name: string) => {
    let index = 0;
