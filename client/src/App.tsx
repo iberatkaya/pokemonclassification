@@ -106,7 +106,7 @@ class App extends Component<Props, State> {
             this.state.image === '' ?
               <div className="container justify-center align-items-center">
                 <div className="text-center">
-                  <p className="lead" style={{ fontSize: '1.1rem' }}>Upload your Pokemon image to classify it. Images are clasified with Tensorflow.js and MobileNet using transfer learning. Currently only Bulbasaur, Charmander, and Squirtle are classified. </p>
+                  <p className="lead" style={{ fontSize: '1.1rem' }}>Upload your Pokemon image to classify it. Images are clasified with Tensorflow.js using a custom trained model. Currently only Bulbasaur, Charmander, and Squirtle are classified. </p>
                   { this.state.status === '1' ? <div></div> : <div className="text-danger mb-4" style={{fontSize: '1.2rem'}} >Please upload an image with no alpha channel!</div>}
                 </div>
                 <form className="form">
