@@ -16,8 +16,10 @@ import Upload from './controllers/api_controllers/Upload';
  * @property {Array} middleWares The middlewares may be passed to this property to be used in Express. 
  */
 
+let envPort = process.env.PORT !== undefined ? parseInt(process.env.PORT) : null;
+
 const app = new App({
-   port: 3001,
+   port: envPort || 3001,
    controllers: {
       React: new ReactController()
    },
