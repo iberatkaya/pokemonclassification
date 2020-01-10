@@ -20,5 +20,8 @@ export let predict = async (name: string) => {
    let prediction = model.predict(predtensor);
    // @ts-ignore
    let data = await prediction.data() as Array<number>;
+   tensor[0].dispose();
+   predtensor.dispose();
+   model.dispose();
    return { Bulbasaur: data[0].toFixed(2), Charmander: data[1].toFixed(2), Squirtle: data[2].toFixed(2) } as APIResponse;   
 }
