@@ -6,9 +6,11 @@ const imageDim = 256;
 
 export let predict = async (name: string) => {
    let index = 0;
-   while(name.length > 0 && index < name.length && name[index] != ',')
+   if(name.includes(',')){
+      while(name.length > 0 && index < name.length && name[index] != ',')
+         index++;
       index++;
-   index++;
+   }
    let newname = name.substring(index);
    const model = await tf.loadLayersModel("file://" + __dirname + '/model.json');
    let imgBuffer = Buffer.from(newname, 'base64');

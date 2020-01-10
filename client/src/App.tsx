@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
 import './App.css';
-import {APIResponse} from '../../interfaces';
+import { APIResponse } from '../../interfaces';
 
 
 /**
@@ -25,6 +25,7 @@ interface Props {
 interface State {
   image: string,
   scanned: boolean,
+  url: string,
   pred: APIResponse | null,
   status: string
 }
@@ -39,6 +40,7 @@ class App extends Component<Props, State> {
       image: '',
       scanned: false,
       pred: null,
+      url: '',
       status: '1'
     }
   }
@@ -70,8 +72,35 @@ class App extends Component<Props, State> {
     });
     let resjson = await res.json();
     console.log(resjson);
-    if(resjson.status === '1')
+    if (resjson.status === '1')
       this.setState({ image: file, pred: resjson.data, status: resjson.status })
+    else
+      this.setState({ status: resjson.status })
+  }
+
+  onChangeURL = (e: React.ChangeEvent<HTMLInputElement>) => {
+    console.log('e')
+    this.setState({url: e.target.value});
+  }
+
+  onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    let data = {
+      url: this.state.url
+    };
+    let res = await fetch('/api/sendlink', {
+      headers: {
+        "Accept": "application/json",
+        "Content-Type": "application/json; charset=utf-8",
+
+      },
+      method: "POST",
+      body: JSON.stringify(data)
+    });
+    let resjson = await res.json();
+    console.log(resjson);
+    if (resjson.status === '1')
+      this.setState({ image: data.url, pred: resjson.data, status: resjson.status })
     else
       this.setState({ status: resjson.status })
   }
@@ -107,7 +136,7 @@ class App extends Component<Props, State> {
               <div className="container justify-center align-items-center">
                 <div className="text-center">
                   <p className="lead" style={{ fontSize: '1.1rem' }}>Upload your Pokemon image to classify it. Images are clasified with Tensorflow.js using a custom trained model. Currently only Bulbasaur, Charmander, and Squirtle are classified. </p>
-                  { this.state.status === '1' ? <div></div> : <div className="text-danger mb-4" style={{fontSize: '1.2rem'}} >Please upload an image with no alpha channel!</div>}
+                  {this.state.status === '1' ? <div></div> : <div className="text-danger mb-4" style={{ fontSize: '1.2rem' }} >Please upload an image with no alpha channel!</div>}
                 </div>
                 <form className="form">
                   <div className="input-group">
@@ -118,6 +147,12 @@ class App extends Component<Props, State> {
                       <input value={this.state.image} onChange={this.onChange} accept="image/*" type="file" className="custom-file-input" />
                       <label className="custom-file-label">Choose image</label>
                     </div>
+                  </div>
+                </form>
+                <form className="form mt-4" onSubmit={this.onSubmit}>
+                  <div className="input-group">
+                    <input value={this.state.url} onChange={this.onChangeURL} type="text" className="form-control" placeholder="https://www.image.com/charmander.jpg" />
+                    <button type="submit" className="btn btn-outline-primary">Submit</button>
                   </div>
                 </form>
               </div>
@@ -136,7 +171,7 @@ class App extends Component<Props, State> {
                     </ul>
                     <div className="text-center mb-2">
                       <button className="btn btn-outline-primary" onClick={async () => {
-                        this.setState({ image: '', scanned: false })
+                        this.setState({ image: '', url: '', scanned: false })
                       }}>Classify New Image</button>
                     </div>
                   </div>

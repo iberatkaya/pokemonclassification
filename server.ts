@@ -4,6 +4,7 @@ import bodyParser from 'body-parser';
 import App from './app';
 import ReactController from './controllers/ReactController';
 import Upload from './controllers/api_controllers/Upload';
+import SendLink from './controllers/api_controllers/SendLink';
 
 
 /**
@@ -24,7 +25,8 @@ const app = new App({
       React: new ReactController()
    },
    apiCalls: [
-      new Upload()
+      new Upload(),
+      new SendLink()
    ],
    middleWares: [
       bodyParser.json({limit: '50mb'}),
