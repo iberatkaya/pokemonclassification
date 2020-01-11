@@ -1,7 +1,6 @@
 import cookieParser from 'cookie-parser';
 import logger from 'morgan';
 import bodyParser from 'body-parser';
-import cors from 'cors';
 import App from './app';
 import ReactController from './controllers/ReactController';
 import Upload from './controllers/api_controllers/Upload';
@@ -33,8 +32,7 @@ const app = new App({
       bodyParser.json({limit: '50mb'}),
       bodyParser.urlencoded({ limit: '50mb', extended: true }),
       logger('dev'),
-      cookieParser(),
-      cors()
+      cookieParser()
    ]
 })
 

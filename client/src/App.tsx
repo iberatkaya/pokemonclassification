@@ -59,10 +59,7 @@ class App extends Component<Props, State> {
   onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     e.persist();
     this.setState({ loading: true }, async () => {
-      console.log(e);
-      let file = URL.createObjectURL(e.target.files![0]);
-      let image = e.target.files![0];
-      let imagedata = await this.getBase64(image) as string
+      let imagedata = await this.getBase64(e.target.files![0]) as string
       let data = {
         image: imagedata
       };
@@ -78,7 +75,7 @@ class App extends Component<Props, State> {
       let resjson = await res.json();
       console.log(resjson);
       if (resjson.status === '1')
-        this.setState({ image: file, loading: false, pred: resjson.data, status: resjson.status })
+        this.setState({ image: imagedata, loading: false, pred: resjson.data, status: resjson.status })
       else
         this.setState({ status: resjson.status, loading: false })
     })
