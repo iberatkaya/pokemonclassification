@@ -58,8 +58,9 @@ class App extends Component<Props, State> {
 
   onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     e.persist();
+    const file = e.target.files![0]
     this.setState({ loading: true }, async () => {
-      let imagedata = await this.getBase64(e.target.files![0]) as string
+      let imagedata = await this.getBase64(file) as string
       let data = {
         image: imagedata
       };
