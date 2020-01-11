@@ -5,6 +5,7 @@ import { APIResponse } from './interfaces';
 const imageDim = 256;
 
 export let predict = async (name: string) => {
+   console.log('Predicting');
    let index = 0;
    if(name.includes(',')){
       while(name.length > 0 && index < name.length && name[index] != ',')
@@ -23,5 +24,6 @@ export let predict = async (name: string) => {
    tensor[0].dispose();
    predtensor.dispose();
    model.dispose();
+   console.log(tf.memory());
    return { Bulbasaur: data[0].toFixed(2), Charmander: data[1].toFixed(2), Squirtle: data[2].toFixed(2) } as APIResponse;   
 }
