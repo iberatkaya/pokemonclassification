@@ -112,9 +112,6 @@ class App extends Component<Props, State> {
     })
   }
 
-  /**
-   * The prediction used while training
-   */
 
   render() {
     return (
@@ -143,7 +140,7 @@ class App extends Component<Props, State> {
               this.state.image === '' ?
                 <div className="container justify-center align-items-center">
                   <div className="text-center">
-                    <p className="lead" style={{ fontSize: '1.1rem' }}>Upload your Pokemon image to classify it. Images are clasified with Tensorflow.js using a custom trained model. Currently only Bulbasaur, Charmander, and Squirtle are classified. </p>
+                    <p className="lead" style={{ fontSize: '1.1rem' }}>Upload your Pokemon image to classify it. Images are clasified with Tensorflow.js using a custom trained model. Currently only Bulbasaur, Charmander, Squirtle, Mewtwo, and Pikachu are classified. </p>
                     {this.state.status === '1' ? <div></div> : <div className="text-danger mb-4" style={{ fontSize: '1.2rem' }} >Please upload an image with no alpha channel!</div>}
                   </div>
                   <form className="form">
@@ -176,6 +173,8 @@ class App extends Component<Props, State> {
                         <li className="list-group-item">Bulbasaur - Probability: {(parseFloat(this.state.pred!.Bulbasaur) * 100).toFixed(2)}%</li>
                         <li className="list-group-item">Charmander - Probability: {(parseFloat(this.state.pred!.Charmander) * 100).toFixed(2)}%</li>
                         <li className="list-group-item">Squirtle - Probability: {(parseFloat(this.state.pred!.Squirtle) * 100).toFixed(2)}%</li>
+                        <li className="list-group-item">Mewtwo - Probability: {(parseFloat(this.state.pred!.Mewtwo) * 100).toFixed(2)}%</li>
+                        <li className="list-group-item">Pikachu - Probability: {(parseFloat(this.state.pred!.Pikachu) * 100).toFixed(2)}%</li>
                       </ul>
                       <div className="text-center mb-2">
                         <button className="btn btn-outline-primary" onClick={async () => {

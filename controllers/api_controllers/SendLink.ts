@@ -28,7 +28,7 @@ class SendLink implements APIHandler {
       } catch (e) {
          console.log(e);
          console.log('error');
-         res.json({ data: { Bulbasaur: '0', Charmander: '0', Squirtle: '0', status: '0'} as APIResponse });
+         res.json({ data: { Bulbasaur: '0', Charmander: '0', Squirtle: '0', Mewtwo: '0', Pikachu: '0', status: '0'} as APIResponse });
       }
    }
 }

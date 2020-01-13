@@ -3,13 +3,10 @@
   <img alt="Version" src="https://img.shields.io/badge/version-0.0.3-blue.svg?cacheSeconds=2592000" />
 </p>
 
-> Pokemon Classification is a React and Express App that uses Tenserflow.js. It uses a custom trained model to classify Pokemons. Currently only 3 pokemons are classified. These are Bulbasaur, Charmander, and Squirtle.
+> Pokemon Classification is a React and Express App that uses Tenserflow.js. It uses a custom trained model to classify Pokemons. Currently only 5 pokemons are classified. These are Bulbasaur, Charmander, Squirtle, Mewtwo, and Pikachu. Check out the [model](https://github.com/iberatkaya/pokemontrain).
 
 ### 🏠 [Homepage](https://ibkpokemon.herokuapp.com/)
 
-## Check Out The Model
-
-[Model](https://github.com/iberatkaya/pokemontrain)
 
 ## Install
 

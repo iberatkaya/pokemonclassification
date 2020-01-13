@@ -25,4 +25,4 @@ export interface Controllers {React: ReactController}
 export interface APIHandler {requestHandler: (_req: Request, res: Response) => void, apiURL: string};
 
 
-export interface APIResponse {Bulbasaur: string, Charmander: string, Squirtle: string};
+export interface APIResponse {Bulbasaur: string, Charmander: string, Squirtle: string, Mewtwo: string, Pikachu: string};

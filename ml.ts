@@ -2,7 +2,7 @@ import * as tf from '@tensorflow/tfjs-node';
 import sharp from 'sharp';
 import { APIResponse } from './interfaces';
 
-const imageDim = 256;
+const imageDim = 144;
 
 export let predict = async (name: string) => {
    console.log('Predicting');
@@ -25,5 +25,5 @@ export let predict = async (name: string) => {
    predtensor.dispose();
    model.dispose();
    console.log(tf.memory());
-   return { Bulbasaur: data[0].toFixed(2), Charmander: data[1].toFixed(2), Squirtle: data[2].toFixed(2) } as APIResponse;   
+   return { Bulbasaur: data[0].toFixed(2), Charmander: data[1].toFixed(2), Squirtle: data[2].toFixed(2), Mewtwo: data[3].toFixed(2), Pikachu: data[4].toFixed(2) } as APIResponse;   
 }
