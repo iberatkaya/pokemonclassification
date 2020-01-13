@@ -166,10 +166,10 @@ class App extends Component<Props, State> {
                   <div className="row">
                     <div className="col-lg-12">
                       <div className="text-center">
-                        <img alt="input" ref="image" style={{ maxWidth: '60%' }} className="img-responsive" src={this.state.image}></img>
+                        <img alt="input" ref="image" style={{ maxWidth: '60%', marginBottom: '2rem' }} className="img-responsive" src={this.state.image}></img>
                       </div>
                       <ul className="list-group mb-4">
-                        <li className="list-group-item disabled">KNN Predictions</li>
+                        <li className="list-group-item disabled">CNN Predictions</li>
                         <li className="list-group-item">Bulbasaur - Probability: {(parseFloat(this.state.pred!.Bulbasaur) * 100).toFixed(2)}%</li>
                         <li className="list-group-item">Charmander - Probability: {(parseFloat(this.state.pred!.Charmander) * 100).toFixed(2)}%</li>
                         <li className="list-group-item">Squirtle - Probability: {(parseFloat(this.state.pred!.Squirtle) * 100).toFixed(2)}%</li>
